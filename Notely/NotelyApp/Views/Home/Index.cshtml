@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Note>
+@{
+    ViewData["Title"] = "My Notes";
+}
+
+
+<div class="index">
+
+    @if (Model.Any())
+    {
+        <div class="panel panel-default index_header">
+            <h3 class="panel-body">Your Notes</h3>
+        </div>
+
+        @foreach (Note note in Model.Reverse())
+        {
+            <div class="panel panel-default">
+                <a asp-action="NoteDetail" asp-route-id="@note.NoteID" class="index_list-item-link">
+                    <div class="panel-body">
+                        @note.Subject
+                    </div>
+                </a>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="panel panel-default index_empty-list">
+            <h3 class="panel-body">You don't have any notes. Click on the button below to create a note.</h3>
+        </div>
+    }
+
+       <div class="index_new-note-button-wrapper">
+           <a asp-action="NoteEditor" class="index_new-note-button">New Note</a>
+    </div>
+
+</div>
+
