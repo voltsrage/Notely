@@ -8,7 +8,7 @@ namespace NotelyApp.Repository
 {
     public class NoteRepository : INoteRepository
     {
-       private List<Note> _notes;
+       private readonly List<Note> _notes;
 
         public NoteRepository()
         {

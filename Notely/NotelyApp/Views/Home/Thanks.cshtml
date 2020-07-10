@@ -1,0 +1,25 @@
+﻿@model Note
+@{
+    ViewData["Title"] = "Thanks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (Model != null && Model.NoteID != Guid.Empty)
+    {
+        <h2>@Model.Subject</h2>
+        <h2>Your Note has been Successfully Saved</h2>
+    }
+    else
+    {
+        <h2>Your Note has been Successfully Saved</h2>
+    }
+}
+
+
+<div class="panel-footer note-detail_footer">
+    <div class="note-detail_flex-container">
+        <a class="note-detail_button" asp-action="Index">Back to List</a>
+    </div>
+</div>
+

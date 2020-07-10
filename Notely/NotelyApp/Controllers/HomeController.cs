@@ -12,7 +12,7 @@ namespace NotelyApp.Controllers
     public class HomeController : Controller
     {
 
-        INoteRepository np;
+        private readonly INoteRepository np;
 
         public HomeController(INoteRepository Np)
         {
@@ -38,10 +38,9 @@ namespace NotelyApp.Controllers
                 var note = np.FindNoteById(Id);
                 return View(note);
             }
-            else
-            {
-                return View();
-            }
+          
+            return View();
+            
         }
 
         [HttpPost]
@@ -68,7 +67,7 @@ namespace NotelyApp.Controllers
                     note2.Detail = note.Detail;
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Thanks");
             }
             else
             {
@@ -81,6 +80,12 @@ namespace NotelyApp.Controllers
             var note = np.FindNoteById(Id);
             note.IsDeleted = true;
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Thanks(Guid Id)
+        {
+            var note = np.FindNoteById(Id);
+            return View(note);
         }
 
         public IActionResult Privacy()
